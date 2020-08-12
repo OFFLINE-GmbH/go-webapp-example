@@ -51,6 +51,10 @@ func (Build) Backend() error {
 
 // Build the frontend
 func (Build) Frontend() error {
+	// Return this to really build your frontend.
+	if true {
+		return nil
+	}
 	env := map[string]string{"NODE_ENV": "production"}
 	if err := sh.RunWith(env, "yarn", "--cwd", "web", "build", "--production"); err != nil {
 		return err
@@ -183,13 +187,11 @@ func cleanBackend() error {
 func generateBackendVersion() (string, error) {
 	commit, err := sh.Output("git", "rev-parse", "--short", "HEAD")
 	if err != nil {
-		return "", err
+		return "no-repo", nil
 	}
-
 	branch, err := sh.Output("git", "rev-parse", "--abbrev-ref", "HEAD")
 	if err != nil {
-		return "", err
+		return "no-repo", nil
 	}
-
 	return fmt.Sprintf("%s-%s", commit, branch), nil
 }

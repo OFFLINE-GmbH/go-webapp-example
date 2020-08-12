@@ -65,7 +65,7 @@ If you make changes to the code, the binary will be rebuilt.
 
 ### Visit the GraphQL Playground
 
-Once the Docker stack and the backend server are running, visit `http://localhost:8888/backend/graphql-playground` in your browser.
+Once the Docker stack and the backend server are running, visit [`http://localhost:8888/backend/graphql-playground`](http://localhost:8888/backend/graphql-playground) in your browser.
 
 You can run the following query to test your installation:
 
@@ -121,8 +121,6 @@ To lint all backend code, run
 mage -v lint:backend
 ```
 
-If you make changes to the code, the binary will be rebuilt.
-
 ### Run tests
 
 To run tests, use 
@@ -147,7 +145,9 @@ mage -v run:generate
 
 Run `mage` without any arguments to get a list of all available tasks. These tasks are stored in the [magefile.go](./magefile.go).
 
+### Change the configuration
 
+The whole application is configured using the [`config.toml`](config.toml) file. Change it so it fits your needs.
 
 ### Build the docker image
 
@@ -184,7 +184,7 @@ Use the `seed` command to populate the database with initial seed data.
 
 ### Start the server
 
-Use the `serve` command to start the backend server directly.
+Use the `serve` command to start the backend server without live reloading.
 
 ```
 ./go-webapp-example serve
