@@ -14,7 +14,6 @@ import (
 	"go-webapp-example/pkg/fs"
 	"go-webapp-example/pkg/log"
 
-	"github.com/getsentry/sentry-go"
 	"github.com/pkg/errors"
 )
 
@@ -63,7 +62,6 @@ func (i *Backup) Run(ctx context.Context, wg *sync.WaitGroup, logger log.Logger)
 				err := i.createBackupDump(ctx, logger)
 				if err != nil {
 					logger.Errorf("backup dump failed: %s", err)
-					sentry.CaptureException(errors.Wrap(err, "backup dump failed"))
 					continue
 				}
 				logger.Info("database dump created successfully")

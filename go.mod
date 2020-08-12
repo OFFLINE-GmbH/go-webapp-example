@@ -14,11 +14,8 @@ require (
 	github.com/casbin/casbin v1.9.1
 	github.com/cenkalti/backoff/v3 v3.2.2
 	github.com/containerd/containerd v1.2.11 // indirect
-	github.com/davecgh/go-spew v1.1.1
 	github.com/dgryski/trifles v0.0.0-20191129005055-5a6159895336 // indirect
-	github.com/disintegration/imaging v1.6.2
 	github.com/docker/distribution v2.7.1+incompatible // indirect
-	github.com/getsentry/sentry-go v0.7.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-chi/chi v4.0.3+incompatible
 	github.com/go-chi/cors v1.0.0
@@ -27,7 +24,7 @@ require (
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/golang-migrate/migrate/v4 v4.8.0
 	github.com/golang/protobuf v1.3.2 // indirect
-	github.com/google/go-cmp v0.4.0
+	github.com/google/go-cmp v0.4.0 // indirect
 	github.com/gorilla/mux v1.7.4 // indirect
 	github.com/gorilla/websocket v1.4.1
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
@@ -38,6 +35,8 @@ require (
 	github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/oleiade/reflections v1.0.0
+	github.com/onsi/ginkgo v1.10.3 // indirect
+	github.com/onsi/gomega v1.7.1 // indirect
 	github.com/ory/dockertest v3.3.5+incompatible // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/pkg/errors v0.9.1
@@ -48,14 +47,10 @@ require (
 	github.com/spf13/cobra v0.0.5
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.6.2
-	github.com/statsd/client v0.2.0
-	github.com/statsd/client-interface v0.0.0-20140909221041-d354afbbdb2b // indirect
 	github.com/stretchr/testify v1.5.1
 	github.com/vektah/gqlparser/v2 v2.0.1
-	github.com/visionmedia/go-debug v0.0.0-20180109164601-bfacf9d8a444 // indirect
 	golang.org/x/crypto v0.0.0-20200302210943-78000ba7a073
 	golang.org/x/net v0.0.0-20200301022130-244492dfa37a // indirect
-	golang.org/x/sync v0.0.0-20190423024810-112230192c58
 	golang.org/x/sys v0.0.0-20200302150141-5c8b2ff67527 // indirect
 	google.golang.org/genproto v0.0.0-20190508193815-b515fa19cec8 // indirect
 	google.golang.org/grpc v1.21.4 // indirect

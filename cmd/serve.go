@@ -12,8 +12,6 @@ import (
 	"go-webapp-example/internal/app"
 	"go-webapp-example/pkg/log"
 
-	"github.com/getsentry/sentry-go"
-	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
@@ -47,9 +45,7 @@ func runServer(_ *cobra.Command, _ []string) {
 
 	err := instance.Migrate()
 	if err != nil {
-		text := fmt.Sprintf("failed to run migrations: %s", err)
-		sentry.CaptureException(errors.New(text))
-		logger.Fatalf(text)
+		logger.Fatalf(fmt.Sprintf("failed to run migrations: %s", err))
 		return
 	}
 
@@ -72,7 +68,6 @@ func graceful(instance *app.Kernel, timeout time.Duration, logger log.Logger) {
 	defer cancel()
 
 	if err := instance.Shutdown(ctx); err != nil {
-		sentry.CaptureException(err)
 		logger.Errorf("application shutdown error: %v\n", err)
 	} else {
 		logger.Infoln("application stopped")

@@ -23,7 +23,6 @@ import (
 	"go-webapp-example/pkg/router"
 	"go-webapp-example/pkg/session"
 
-	"github.com/getsentry/sentry-go"
 	"github.com/pkg/errors"
 )
 
@@ -183,9 +182,7 @@ func (k *Kernel) Listen(server *http.Server) {
 
 	listen := func() error {
 		if err = server.ListenAndServe(); err != http.ErrServerClosed {
-			msg := fmt.Sprintf("failed to start http server: %v", err)
-			sentry.CaptureException(errors.New(msg))
-			logger.Error(msg)
+			logger.Error(fmt.Sprintf("failed to start http server: %v", err))
 			return err
 		}
 		return nil
@@ -213,9 +210,6 @@ func (k *Kernel) Shutdown(ctx context.Context) error {
 		k.Log.WithPrefix("app").Warn("Application cannot be shutdown since current state is not 'running'")
 		return nil
 	}
-
-	// Make sure Sentry sends all buffered data before the shutdown.
-	defer sentry.Flush(2 * time.Second)
 
 	k.state = StateStopping
 	defer func() {

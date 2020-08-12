@@ -23,7 +23,6 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler/lru"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/getsentry/sentry-go"
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 	"github.com/vektah/gqlparser/v2/gqlerror"
@@ -101,7 +100,9 @@ func newServer(es graphql.ExecutableSchema, logger log.Logger) *handler.Server {
 		logger.Errorf("%+v", err)
 		logger.Errorf("%s", debug.Stack())
 		if errString, ok := err.(string); ok {
-			sentry.CaptureException(errors.New(errString))
+			// You can report to Sentry here.
+			_ = errString
+			// sentry.CaptureException(errors.New(errString))
 		}
 		return errors.New("internal system error")
 	})
@@ -109,13 +110,9 @@ func newServer(es graphql.ExecutableSchema, logger log.Logger) *handler.Server {
 		if gqlErr, isGQLError := err.(*gqlerror.Error); isGQLError {
 			// Don't log validation errors.
 			if _, isValidation := gqlErr.Extensions["validation"]; !isValidation {
-				sentry.CaptureException(err)
 				logger.Errorf("%+v", err)
 			}
-		} else {
-			sentry.CaptureException(err)
 		}
-
 		return graphql.DefaultErrorPresenter(ctx, err)
 	})
 
