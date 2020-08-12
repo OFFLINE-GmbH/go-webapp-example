@@ -1,0 +1,46 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: ../build/Dockerfile
+    command: serve
+    restart: unless-stopped
+    tty: true
+    networks:
+    - go-webapp-example
+    depends_on:
+    - db
+    volumes:
+    - gowebappexample_home:/go-webapp-example
+
+  db:
+    image: mysql:8.0
+    container_name: gowebappexample_db
+    restart: unless-stopped
+    command: [ '--default-authentication-plugin=mysql_native_password' ]
+    environment:
+      MYSQL_USER: gowebapp
+      MYSQL_DATABASE: gowebapp
+      MYSQL_PASSWORD: gowebapp
+      MYSQL_ROOT_PASSWORD: gowebapp
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+    - gowebappexample_mysql:/var/lib/mysql
+    - gowebappexample_home:/go-webapp-example
+    networks:
+    - go-webapp-example
+    cap_add:
+    - SYS_NICE
+    ports:
+    - "3306:3306"
+
+volumes:
+  gowebappexample_mysql:
+    external: false
+  gowebappexample_home:
+    external: false
+
+networks:
+  go-webapp-example:
+    external: false

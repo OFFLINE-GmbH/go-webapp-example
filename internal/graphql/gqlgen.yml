@@ -1,0 +1,29 @@
+# .gqlgen.yml example
+#
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+- "*.graphql"
+
+struct_tag: json
+
+exec:
+  filename: gqlserver/gen_server.go
+
+model:
+  filename: gqlmodels/gen_models.go
+
+resolver:
+  layout: follow-schema
+  dir: gqlresolvers
+  package: gqlresolvers
+
+autobind:
+- go-webapp-example/internal/pkg/entity
+
+models:
+  ID:
+    model:
+    - github.com/99designs/gqlgen/graphql.IntID
+    - github.com/99designs/gqlgen/graphql.ID

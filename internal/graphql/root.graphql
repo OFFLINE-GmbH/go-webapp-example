@@ -1,0 +1,72 @@
+"""Makes sure a user is logged in and has the appropriate permissions"""
+directive @restricted(permission: [String!]) on FIELD | FIELD_DEFINITION | SCHEMA
+
+"""A date and time string"""
+scalar Time
+
+"""Represents any type of structure"""
+scalar Any
+
+"""Represents a multipart file upload"""
+scalar Upload
+
+"""Possible sort directions"""
+enum SortDirection {
+    ASC
+    DESC
+}
+
+"""Input to update the sort order of an entity"""
+input SortOrderInput {
+    id: ID!
+    position: Int!
+}
+
+"""UploadResult is returned when a file upload succeeded"""
+type UploadResult {
+    filename: String!
+    path: String!
+}
+
+type Query {
+
+    """Returns all users"""
+    users: [User!]!                                       @restricted(permission: ["admin.user::read"])
+    """Returns a specific user"""
+    user(id: ID!): User!                                  @restricted(permission: ["admin.user::read"])
+    """Returns the currently authenticated user"""
+    authUser: User                                        @restricted
+
+    """Returns all roles"""
+    roles: [Role!]!                                       @restricted(permission: ["admin.role::read"])
+    """Returns a specific role"""
+    role(id: ID!): Role!                                  @restricted(permission: ["admin.role::read"])
+
+    """Returns all quotes"""
+    quotes: [Quote!]!                                 @restricted(permission: ["admin.quote::read"])
+    """Returns a specific quote"""
+    quote(id: ID!): Quote!                            @restricted(permission: ["admin.quote::read"])
+}
+
+type Mutation {
+  """Create a new user"""
+    createUser(input: UserInput!): User!                  @restricted(permission: ["admin.user::manage"])
+    """Update an existing user"""
+    updateUser(input: UserInput!): User!                  @restricted(permission: ["admin.user::write"])
+    """Delete an existing user"""
+    deleteUser(id: [ID!]!): [User!]!                      @restricted(permission: ["admin.user::manage"])
+
+    """Create a new role"""
+    createRole(input: RoleInput!): Role!                  @restricted(permission: ["admin.role::manage"])
+    """Update an existing role"""
+    updateRole(input: RoleInput!): Role!                  @restricted(permission: ["admin.role::write"])
+    """Delete an existing role"""
+    deleteRole(id: [ID!]!): [Role!]!                      @restricted(permission: ["admin.role::manage"])
+
+    """Create a new quote"""
+    createQuote(input: QuoteInput!): Quote!            @restricted(permission: ["admin.quote::manage"])
+    """Update an existing quote"""
+    updateQuote(input: QuoteInput!): Quote!            @restricted(permission: ["admin.quote::write"])
+    """Delete an existing quote"""
+    deleteQuote(id: [ID!]!): [Quote!]!                  @restricted(permission: ["admin.quote::manage"])
+}

@@ -1,0 +1,29 @@
+
+"""A role that is assigned to a user, has many permissions"""
+type Role {
+    id: ID!
+    name: String!
+    permissions: [Permission!]!
+    users: [User!]!
+}
+
+"""Input to define permissions of a role"""
+input PermissionInput {
+    code: String!
+    level: String!
+}
+
+"""Input to create or update a role"""
+input RoleInput {
+    id: Int
+    name: String!
+    permissions: [PermissionInput]
+    users: [ID!]
+}
+
+"""A permission that belongs to a role"""
+type Permission {
+    code: String!
+    level: String!
+    code_level: String
+}

@@ -1,0 +1,42 @@
+users:
+- id: 1
+  name: admin
+  is_superuser: 1
+  password: $2y$12$xobp.ipgSFK4keIys2lV3eHB2mV3MUbskFf/OTeXNPObC3xXgrwKm #admin
+  created_at: "2020-06-01 11:43:20"
+  updated_at: "2020-06-01 11:43:20"
+
+roles:
+- id: 1
+  name: Admin
+  created_at: "2020-06-01 11:43:20"
+  updated_at: "2020-06-01 11:43:20"
+
+role_user:
+- id: 1
+  user_id: 1
+  role_id: 1
+
+quotes:
+- id: 1
+  author: Charles Dickens
+  content: |
+    We must meet reverses boldly, and not suffer them to frighten us, my dear. We must learn to act the play out. We must live misfortune down, Trot!
+  created_at: "2020-06-01 11:43:20"
+  updated_at: "2020-06-01 11:43:20"
+
+- id: 2
+  author: George Santayana
+  content: |
+    Skepticism, like chastity, should not be relinquished too readily.
+  created_at: "2020-06-01 11:43:20"
+  updated_at: "2020-06-01 11:43:20"
+
+- id: 3
+  author: Chris Sierzant
+  content: |
+    And falling is part of the sport. If you aren't falling, you aren't getting better.
+  created_at: "2020-06-01 11:43:20"
+  updated_at: "2020-06-01 11:43:20"
+
+

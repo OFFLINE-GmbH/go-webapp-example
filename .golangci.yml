@@ -1,0 +1,46 @@
+linters-settings:
+  govet:
+    check-shadowing: true
+  golint:
+    min-confidence: 0
+  gocyclo:
+    min-complexity: 15
+  maligned:
+    suggest-new: true
+  misspell:
+    locale: US
+  lll:
+    line-length: 160
+  goimports:
+    local-prefixes: go-webapp-example
+  gocritic:
+    enabled-tags:
+    - diagnostic
+    - performance
+    - style
+    - experimental
+    disabled-checks:
+    - hugeParam
+    - whyNoLint
+
+linters:
+  enable-all: true
+  disable:
+  - prealloc
+  - depguard
+  - gochecknoglobals
+  - goconst
+  - dupl
+  - wsl
+  - godox
+  - gomnd
+  - testpackage
+  - goerr113
+  - godot
+
+
+run:
+  deadline: 10m
+  skip-dirs:
+  - internal/graphql/server
+  - build

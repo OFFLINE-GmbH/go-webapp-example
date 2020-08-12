@@ -1,0 +1,12 @@
+singular: Benutzer
+plural: Benutzer
+
+fields:
+  name: Benutzername
+  username: "@:user.fields.name"
+  password: Passwort
+  password_repeat: Passwort wiederholen
+  new_password: Neues Passwort
+  roles: "@:role.plural"
+  is_superuser: Ist Superuser
+  is_superuser_comment: Superuser haben immer Vollzugriff auf alle Daten (Rollen werden ignoriert)

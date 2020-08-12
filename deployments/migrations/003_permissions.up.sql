@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS permissions
+(
+    id   SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    code VARCHAR(191),
+    PRIMARY KEY (id),
+    INDEX (code)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci;

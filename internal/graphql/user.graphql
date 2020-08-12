@@ -1,0 +1,19 @@
+"""A single user entity"""
+type User {
+    id: ID!
+    name: String!
+    is_superuser: Boolean!
+
+    roles: [Role!]!
+    permissions: [Permission!]!
+}
+
+"""Input to create or update a user"""
+input UserInput {
+    id: Int
+    name: String!
+    password: String!
+    password_repeat: String!
+    is_superuser: Boolean!
+    roles: [ID!]
+}

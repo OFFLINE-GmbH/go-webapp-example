@@ -1,0 +1,13 @@
+"""A single quote entity"""
+type Quote {
+    id: ID!
+    author: String!
+    content: String!
+}
+
+"""Input to create or update a quote"""
+input QuoteInput {
+    id: Int
+    author: String!
+    content: String!
+}

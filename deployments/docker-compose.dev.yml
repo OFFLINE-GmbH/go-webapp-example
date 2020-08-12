@@ -1,0 +1,10 @@
+version: '3'
+services:
+  # Don't use the app image during development. We use "air" to run the binary.
+  app:
+    build: {}
+    image: tianon/true
+    entrypoint: /true
+    command: ''
+    restart: 'no'
+    ports: []

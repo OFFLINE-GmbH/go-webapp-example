@@ -1,0 +1,6 @@
+singular: Rolle
+plural: Rollen
+
+fields:
+  name: Name
+

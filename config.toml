@@ -1,0 +1,23 @@
+[app]
+locale = "de"
+environment = "dev"
+
+[server]
+port = "8888"
+root_dir = "./"
+locale_dir = "./internal/locales"
+storage_dir = "./tmp/storage"
+static_dir = "./web/dist"
+
+[database]
+name = "gowebapp"
+username = "gowebapp"
+password = "gowebapp"
+host = "127.0.0.1"
+migrations = "./deployments/migrations"
+backup = true
+backup_time = "03:00"
+
+[log]
+level = "trace"
+dir = "tmp/logs"
