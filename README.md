@@ -25,6 +25,13 @@ It includes the following features:
 * [Data Seeder](https://github.com/romanyx/polluter) (Prod and Test)
 * [Live reloading](https://github.com/cosmtrek/air) 
 * [Linting](https://github.com/golangci/golangci-lint) 
+* [GraphQL Server](https://gqlgen.com/)
+* [User sessions](https://github.com/OFFLINE-GmbH/go-webapp-example/blob/master/internal/pkg/auth/auth.go#L114)
+* [Role-based Access control](https://github.com/casbin/casbin)
+* [One-time update routines](https://github.com/OFFLINE-GmbH/go-webapp-example/blob/master/internal/app/update.go#L58)
+* [I18N](https://github.com/OFFLINE-GmbH/go-webapp-example/blob/master/pkg/i18n/i18n.go)
+* [Background processes (Daemons)](https://github.com/OFFLINE-GmbH/go-webapp-example/blob/master/internal/daemon/example.go)
+* [Unit](https://github.com/OFFLINE-GmbH/go-webapp-example/blob/master/internal/pkg/test/db.go) and [Integration](https://github.com/OFFLINE-GmbH/go-webapp-example/blob/master/internal/graphql/gqlresolvers/quote_test.go) tests
 
 ## Disclaimer
 
@@ -36,7 +43,7 @@ While it might not fit your exact needs it can be a good inspiration when buildi
 
 All authentication has been disabled, so you can test the server without having to log in.
 
-Remove the `if true {}` block in [internal/pkg/auth/auth.go:121](internal/pkg/auth/auth.go:121)
+Remove the `if true {}` block in [internal/pkg/auth/auth.go:116](https://github.com/OFFLINE-GmbH/go-webapp-example/blob/master/internal/pkg/auth/auth.go#L116)
 to require a session to access the backend server.
 
 You can login with a `POST` request to `/backend/login`. You need to send a `username` and `password` value (by default both are set to `admin`).
