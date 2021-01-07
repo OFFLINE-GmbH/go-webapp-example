@@ -43,7 +43,7 @@ func NewBackup(host, port, username, password, database, dir, runAt string) *Bac
 
 func (i *Backup) Name() string { return "backup" }
 
-// Backup daemon handles incoming tcp connections.
+// Backup daemon runs backups at a given time
 func (i *Backup) Run(ctx context.Context, wg *sync.WaitGroup, logger log.Logger) error {
 	wg.Add(1)
 	defer wg.Done()
